@@ -1,0 +1,60 @@
+/*
+ * Copyright 2015 Soo [154014022@qq.com | sootracker@gmail.com]
+ *
+ *      Licensed under the Apache License, Version 2.0 (the "License");
+ *      you may not use this file except in compliance with the License.
+ *      You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *      Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *      See the License for the specific language governing permissions and
+ *      limitations under the License.
+ *
+ */
+
+package soo.swallow.view.toggle;
+
+public class SpringUtil {
+
+  /**
+   * Map a value within a given range to another range.
+   * @param value the value to map
+   * @param fromLow the low end of the range the value is within
+   * @param fromHigh the high end of the range the value is within
+   * @param toLow the low end of the range to map to
+   * @param toHigh the high end of the range to map to
+   * @return the mapped value
+   */
+  public static double mapValueFromRangeToRange(
+      double value,
+      double fromLow,
+      double fromHigh,
+      double toLow,
+      double toHigh) {
+    double fromRangeSize = fromHigh - fromLow;
+    double toRangeSize = toHigh - toLow;
+    double valueScale = (value - fromLow) / fromRangeSize;
+    return toLow + (valueScale * toRangeSize);
+  }
+
+  /**
+   * Clamp a value to be within the provided range.
+   * @param value the value to clamp
+   * @param low the low end of the range
+   * @param high the high end of the range
+   * @return the clamped value
+   */
+  public static double clamp(double value, double low, double high) {
+    return Math.min(Math.max(value, low), high);
+  }
+  
+  public static int clamp(int value, int low, int high) {
+	    return Math.min(Math.max(value, low), high);
+	  }
+  
+  
+}
+
