@@ -28,23 +28,23 @@ import android.view.View;
 import soo.swallow.view.ExpandPlusListView;
 import soo.swallow.view.ptr.internal.EmptyViewMethodAccessor;
 
-public class PullToRefreshExpandalePlusListView extends PullToRefreshAdapterViewBase<ExpandPlusListView> {
-    public PullToRefreshExpandalePlusListView(Context context) {
+public class PullToRefreshExpandablePlusListView extends PullToRefreshAdapterViewBase<ExpandPlusListView> {
+    public PullToRefreshExpandablePlusListView(Context context) {
         super(context);
         this.setOnScrollListener(mRefreshableView);
     }
 
-    public PullToRefreshExpandalePlusListView(Context context, AttributeSet attrs) {
+    public PullToRefreshExpandablePlusListView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.setOnScrollListener(mRefreshableView);
     }
 
-    public PullToRefreshExpandalePlusListView(Context context, Mode mode) {
+    public PullToRefreshExpandablePlusListView(Context context, Mode mode) {
         super(context, mode);
         this.setOnScrollListener(mRefreshableView);
     }
 
-    public PullToRefreshExpandalePlusListView(Context context, Mode mode, AnimationStyle style) {
+    public PullToRefreshExpandablePlusListView(Context context, Mode mode, AnimationStyle style) {
         super(context, mode, style);
         this.setOnScrollListener(mRefreshableView);
     }
@@ -76,7 +76,7 @@ public class PullToRefreshExpandalePlusListView extends PullToRefreshAdapterView
 
         @Override
         public void setEmptyView(View emptyView) {
-            PullToRefreshExpandalePlusListView.this.setEmptyView(emptyView);
+            PullToRefreshExpandablePlusListView.this.setEmptyView(emptyView);
         }
 
         @Override
@@ -100,7 +100,7 @@ public class PullToRefreshExpandalePlusListView extends PullToRefreshAdapterView
                     scrollRangeY, maxOverScrollX, maxOverScrollY, isTouchEvent);
 
             // Does all of the hard work...
-            OverscrollHelper.overScrollBy(PullToRefreshExpandalePlusListView.this, deltaX, scrollX, deltaY, scrollY,
+            OverscrollHelper.overScrollBy(PullToRefreshExpandablePlusListView.this, deltaX, scrollX, deltaY, scrollY,
                     isTouchEvent);
 
             return returnValue;

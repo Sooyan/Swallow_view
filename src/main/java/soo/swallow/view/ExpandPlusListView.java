@@ -31,6 +31,7 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnGroupClickListener;
+import android.widget.ListAdapter;
 
 public class ExpandPlusListView extends ExpandableListView implements
         OnScrollListener, OnGroupClickListener {
@@ -93,10 +94,20 @@ public class ExpandPlusListView extends ExpandableListView implements
         }
         registerListener();
     }
-    
+
+
     private void registerListener() {
         super.setOnScrollListener(this);
         super.setOnGroupClickListener(this);
+    }
+
+    public void openAllGroups() {
+        if (mAdapter != null) {
+            int count = mAdapter.getGroupCount();
+            for (int i = 0; i < count; i++) {
+                expandGroup(i);
+            }
+        }
     }
 
     private void headerViewClick() {

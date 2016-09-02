@@ -108,6 +108,12 @@ public abstract class ViewHolderAdapter<T, VH extends ViewHolderAdapter.ViewHold
         lisT = onDataChanged(lisT);
         notifyDataSetChanged();
     }
+
+    public void clear() {
+        lisT = onDataChanged(lisT);
+        lisT.clear();
+        notifyDataSetChanged();
+    }
     
     public List<T> getData() {
         return lisT;

@@ -140,4 +140,57 @@
         <!-- @Author Soo adding progress style code by external with xml[end] -->
 
     </declare-styleable>
+
+    <declare-styleable name="IndexView">
+        <attr name="barBgColor" format="reference|color"></attr>
+        <attr name="barTextColor" format="reference|color"></attr>
+        <attr name="barTextSize" format="dimension"></attr>
+        <attr name="barBgMod" format="enum">
+            <enum name="none" value="0"/>
+            <enum name="always" value="1"/>
+            <enum name="onTouch" value="2"/>
+        </attr>
+        <attr name="barFloatMod" format="enum">
+            <enum name="none" value="0"/>
+            <enum name="always" value="1"/>
+            <enum name="onTouch" value="2"/>
+        </attr>
+        <attr name="type" format="enum">
+            <enum name="all" value="0"/>
+            <enum name="judge" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="SwipeLayout">
+        <attr name="drag_edge">
+            <flag name="left" value="1" />
+            <flag name="right" value="2" />
+            <flag name="top" value="4" />
+            <flag name="bottom" value="8" />
+        </attr>
+        <attr name="leftEdgeSwipeOffset" format="dimension" />
+        <attr name="rightEdgeSwipeOffset" format="dimension" />
+        <attr name="topEdgeSwipeOffset" format="dimension" />
+        <attr name="bottomEdgeSwipeOffset" format="dimension" />
+        <attr name="show_mode" format="enum">
+            <enum name="lay_down" value="0" />
+            <enum name="pull_out" value="1" />
+        </attr>
+        <attr name="clickToClose" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="LoadingLayout">
+        <attr name="loadingText" format="string" />
+        <attr name="loadingTextColor" format="color" />
+        <attr name="showLoadingText" format="boolean" />
+        <attr name="loadingErrorText" format="string" />
+        <attr name="loadingErrorTextColor" format="color" />
+        <attr name="showLoadingErrorText" format="boolean" />
+        <attr name="reLoadingEnable" format="boolean" />
+        <attr name="firstState">
+            <enum name="loading" value="1" />
+            <enum name="loadingError" value="2" />
+            <enum name="loadingSucess" value="3" />
+        </attr>
+    </declare-styleable>
 </resources>

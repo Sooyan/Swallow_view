@@ -61,6 +61,11 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
     public static final int SMOOTH_SCROLL_LONG_DURATION_MS = 325;
     static final int DEMO_SCROLL_INTERVAL = 225;
 
+    @Override
+    protected void detachAllViewsFromParent() {
+        super.detachAllViewsFromParent();
+    }
+
     static final String STATE_STATE = "ptr_state";
     static final String STATE_MODE = "ptr_mode";
     static final String STATE_CURRENT_MODE = "ptr_current_mode";
@@ -1671,5 +1676,49 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
     static interface OnSmoothScrollFinishedListener {
         void onSmoothScrollFinished();
     }
+
+//    --------------【soo】-----------------
+    private boolean flag;
+    public void autoRefresh() {
+        if (flag) {
+            return;
+        }
+        flag = true;
+        new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                while (flag) {
+                    if (isReady()) {
+                        makeAutoRefresh();
+                        flag = false;
+                    } else {
+                        try {
+                            Thread.sleep(100);
+                        } catch (InterruptedException e) {
+                        }
+                    }
+                }
+            }
+
+            boolean isReady() {
+                if (mHeaderLayout != null && mHeaderLayout.getHeight() > 0) {
+                    return true;
+                }
+                return false;
+            }
+
+            void makeAutoRefresh() {
+                postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        setRefreshing(true);
+                    }
+                }, 100);
+            }
+
+        }.start();
+    }
+
 
 }
